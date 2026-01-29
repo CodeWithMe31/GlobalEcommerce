@@ -28,6 +28,11 @@ public class ProductService {
     p.setStock(req.stock);
     p.setCategory(req.category);
     return repo.save(p);
+    Product saved = repo.save(p);
+
+    // Sync to search service
+    restTemplate.postForObject("http://localhost:8087/search/index", saved, Void.class);
+    return saved;
   }
 
   public Product update(Long id, ProductRequest req) {
