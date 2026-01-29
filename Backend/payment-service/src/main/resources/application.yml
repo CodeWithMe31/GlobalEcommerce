@@ -1,3 +1,7 @@
 
 server:
   port: 8085
+
+stripe: 
+  secret:
+    key: ${STRIPE_TEST_KEY} # Use an environment variable for security
