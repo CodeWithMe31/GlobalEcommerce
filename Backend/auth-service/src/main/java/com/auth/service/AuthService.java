@@ -15,10 +15,12 @@ public class AuthService {
 
   private final UserRepository repo;
   private final BCryptPasswordEncoder encoder;
+  private final JwtUtil jwtUtil;
 
-  public AuthService(UserRepository repo, BCryptPasswordEncoder encoder) {
+  public AuthService(UserRepository repo, BCryptPasswordEncoder encoder, JwtUtil jwtUtil) {
     this.repo = repo;
     this.encoder = encoder;
+    this.jwtUtil = jwtUtil;
   }
 
   public void register(RegisterRequest req) {
@@ -42,6 +44,6 @@ public class AuthService {
       throw new RuntimeException("Invalid credentials");
     }
 
-    return JwtUtil.generateToken(u.getEmail(), u.getRole());
+    return jwtUtil.generateToken(u.getEmail(), u.getRole());
   }
 }
