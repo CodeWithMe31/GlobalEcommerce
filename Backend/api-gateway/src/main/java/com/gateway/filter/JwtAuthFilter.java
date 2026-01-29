@@ -3,18 +3,19 @@ package com.gateway.filter;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ServerWebExchange;
-import reactor.core.publisher.Mono;
 
 @Configuration
 public class JwtAuthFilter {
 
-  private static final String SECRET = "CHANGE_THIS_SECRET";
+  @Value(${jwt.secret.key})
+  private String secret;
 
   @Bean
   public GlobalFilter jwtFilter() {
@@ -40,7 +41,7 @@ public class JwtAuthFilter {
         String token = authHeader.substring(7);
 
         Claims claims = Jwts.parser()
-            .setSigningKey(SECRET)
+            .setSigningKey(secret)
             .parseClaimsJws(token)
             .getBody();
 
