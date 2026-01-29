@@ -6,16 +6,20 @@ import com.stripe.model.PaymentIntent;
 import com.stripe.model.Refund;
 import com.stripe.param.PaymentIntentCreateParams;
 import com.stripe.param.RefundCreateParams;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import jakarta.annotation.PostConstruct;
 
 @Service
 public class StripeService {
 
   // Replace with your Stripe TEST secret key
-  private static final String STRIPE_SECRET = "sk_test_CHANGE_ME";
+  @Value("${stripe.secret.key}")
+  private String stripeSecret;
 
-  static {
-    Stripe.apiKey = STRIPE_SECRET;
+  @PostConstruct
+  public void init() {
+    Stripe.apiKey = stripeSecret;
   }
 
   public String createPayment(double amount) throws Exception {
