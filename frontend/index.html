@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GlobalMart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<div id="loader" class="loader hidden">
+  <div class="spinner"></div>
+  <p>Loading...</p>
+</div>
+
+<div id="errorBox" class="error hidden"></div>
+
+<nav class="navbar">
+  <div class="brand"><i class="fa-solid fa-globe"></i> GlobalMart</div>
+  <ul class="nav-links">
+    <li onclick="showPage('login')">Login</li>
+    <li onclick="showPage('products')">Products</li>
+    <li onclick="showPage('cart')">Checkout</li>
+    <li onclick="showPage('orders')">My Orders</li>
+    <li id="adminMenu" onclick="showPage('admin')">Admin</li>
+  </ul>
+</nav>
+
+<main class="content">
+
+  <section id="login" class="page active fade">
+    <h2>Login</h2>
+    <div class="form-card">
+        <label for="email">Email:</label><input id="email" placeholder="Email" />
+        <label for="password">Password:</label><input id="password" type="password" placeholder="Password" />
+      <div>
+        <button onclick="login()">Login</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="page fade">
+    <h2>Products</h2>
+    <button onclick="loadProducts()">Load Products</button>
+    <div id="productGrid" class="grid"></div>
+  </section>
+
+  <section id="cart" class="page fade">
+    <h2>Checkout</h2>
+      <label>Shipping Address:</label>
+          <div class="form-card">
+              <label for="AddressLine1">Address Line 1 </label><input id="AddressLine1" placeholder="Address Line 1" />
+              <label for="AddressLine2">Address Line 2 </label><input id="AddressLine2" placeholder="Address Line 2" />
+              <label for="city">City </label><input id="city" placeholder="Your City Name" />
+              <label for="stateUt">State</label>
+              <select id="stateUt" name="stateUt" required>
+                  <option value="">-- Select State / UT --</option>
+                  <optgroup label="States">
+                      <option>Andhra Pradesh</option>
+                      <option>Arunachal Pradesh</option>
+                      <option>Assam</option>
+                      <option>Bihar</option>
+                      <option>Chhattisgarh</option>
+                      <option>Goa</option>
+                      <option>Gujarat</option>
+                      <option>Haryana</option>
+                      <option>Himachal Pradesh</option>
+                      <option>Jharkhand</option>
+                      <option>Karnataka</option>
+                      <option>Kerala</option>
+                      <option>Madhya Pradesh</option>
+                      <option>Maharashtra</option>
+                      <option>Manipur</option>
+                      <option>Meghalaya</option>
+                      <option>Mizoram</option>
+                      <option>Nagaland</option>
+                      <option>Odisha</option>
+                      <option>Punjab</option>
+                      <option>Rajasthan</option>
+                      <option>Sikkim</option>
+                      <option>Tamil Nadu</option>
+                      <option>Telangana</option>
+                      <option>Tripura</option>
+                      <option>Uttar Pradesh</option>
+                      <option>Uttarakhand</option>
+                      <option>West Bengal</option>
+                  </optgroup>
+
+                  <optgroup label="Union Territories">
+                      <option>Andaman & Nicobar Islands</option>
+                      <option>Chandigarh</option>
+                      <option>Dadra & Nagar Haveli and Daman & Diu</option>
+                      <option>Delhi (NCT)</option>
+                      <option>Jammu & Kashmir</option>
+                      <option>Ladakh</option>
+                      <option>Lakshadweep</option>
+                      <option>Puducherry</option>
+                  </optgroup>
+              </select>
+            </div>
+      <div>
+        <button>Proceed to Pay</button>
+      </div>
+  </section>
+
+  <section id="orders" class="page fade">
+    <h2>My Orders</h2>
+    <button onclick="loadOrders()">Refresh</button>
+    <div id="orderList" class="stack"></div>
+  </section>
+
+  <section id="admin" class="page fade">
+    <h2>Admin Dashboard</h2>
+    <p>Order management & status updates</p>
+  </section>
+
+</main>
+
+<script src="./app.js"></script>
+</body>
+</html>

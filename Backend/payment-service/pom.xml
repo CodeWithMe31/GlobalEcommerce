@@ -1,0 +1,23 @@
+
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.payment</groupId>
+  <artifactId>payment-service</artifactId>
+  <version>1.0.0</version>
+
+  <properties>
+    <java.version>17</java.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.stripe</groupId>
+      <artifactId>stripe-java</artifactId>
+      <version>24.10.0</version>
+    </dependency>
+  </dependencies>
+</project>
