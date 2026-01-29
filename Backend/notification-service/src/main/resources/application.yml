@@ -6,8 +6,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: your_email@gmail.com
-    password: your_app_password
+    username: ${MAIL_USERNAME}  #Set via Environment variables
+    password: ${MAIL_PASSWORD}  #Set via Environment variables
     properties:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
